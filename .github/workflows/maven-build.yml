@@ -26,4 +26,6 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Build with Maven Wrapper
-        run: ./mvnw -B packagecurl -v -u ${{ secrets.NEXUS_USER }}:${{ secrets.NEXUS_PASS }} --upload-file target/spring-petclinic-3.1.0-SNAPSHOT.jar http://192.168.139.144:8081//repository/maven-releases/spring-petclinic-3.1.0-SNAPSHOT.jar
+        run: ./mvnw -B package
+      - name: Upload to Nexus
+        run: url -v -u ${{ secrets.NEXUS_USER }}:${{ secrets.NEXUS_PASS }} --upload-file target/spring-petclinic-3.1.0-SNAPSHOT.jar http://192.168.139.144:8081//repository/maven-releases/spring-petclinic-3.1.0-SNAPSHOT.jar

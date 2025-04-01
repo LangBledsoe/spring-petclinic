@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework.samples</groupId>
   <artifactId>spring-petclinic</artifactId>
-  <version>3.1.0-SNAPSHOT</version>
+  <version>3.1.1</version>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -116,6 +116,13 @@
     <dependency>
       <groupId>jakarta.xml.bind</groupId>
       <artifactId>jakarta.xml.bind-api</artifactId>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.14.1</version>
     </dependency>
 
   </dependencies>
@@ -263,6 +270,7 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
+   
     <repository>
       <id>spring-milestones</id>
       <name>Spring Milestones</name>
@@ -271,6 +279,19 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
+
+    <repository>
+      <id>maven-releases</id>
+      <name>Local Nexus Repository</name>
+      <url>https://cb7f-2603-3006-0-7500-45d2-a18b-6ff8-231f.ngrok-free.app/repository/maven-public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+
   </repositories>
 
   <pluginRepositories>
@@ -411,5 +432,20 @@
       </build>
     </profile>
   </profiles>
+
+  <!-- distributionManagement - Step 4 -->
+  <distributionManagement>
+    <repository>
+      <id>maven-releases</id>
+      <name>Nexus release repository</name>
+      <url>https://cb7f-2603-3006-0-7500-45d2-a18b-6ff8-231f.ngrok-free.app/repository/maven-releases</url>
+    </repository>
+    <snapshotRepository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>maven-snapshots</id>
+      <name>Nexus snapshot repository</name>
+      <url>https://cb7f-2603-3006-0-7500-45d2-a18b-6ff8-231f.ngrok-free.app/repository/maven-snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 
 </project>
